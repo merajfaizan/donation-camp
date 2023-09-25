@@ -1,18 +1,13 @@
-import { useEffect } from "react";
+import { RouterProvider } from "react-router-dom";
 import "./App.css";
+import router from "./router/Router";
+
 
 function App() {
-  useEffect(() => {
-    fetch("donation.json")
-      .then((res) => res.json())
-      .then((data) => console.log(data));
-  }, []);
   return (
-    <main>
-      <h1 className="text-5xl capitalize text-center">
-        project setup initialized
-      </h1>
-    </main>
+    <>
+      <RouterProvider router={router}></RouterProvider>
+    </>
   );
 }
 
