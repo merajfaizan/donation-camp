@@ -5,7 +5,7 @@ const Home = () => {
   const [cardData, setCardData] = useState([]);
 
   useEffect(() => {
-    fetch("donation.json")
+    fetch("/donation.json")
       .then((res) => res.json())
       .then((data) => setCardData(data));
   }, []);

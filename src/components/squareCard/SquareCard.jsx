@@ -1,9 +1,17 @@
 /* eslint-disable react/prop-types */
+import { Link } from "react-router-dom";
 const SquareCard = ({ item }) => {
-  const { picture, title, category, text_color, bg_color, category_bg_color } =
-    item;
+  const {
+    _id,
+    picture,
+    title,
+    category,
+    text_color,
+    bg_color,
+    category_bg_color,
+  } = item;
   return (
-    <div className="rounded-lg">
+    <Link to={`/donation/${_id}`} className="rounded-lg">
       <img src={picture} alt="card-picture" />
       <div
         style={{
@@ -20,7 +28,7 @@ const SquareCard = ({ item }) => {
         </p>
         <p className="text-xl font-semibold mt-2">{title}</p>
       </div>
-    </div>
+    </Link>
   );
 };
 
