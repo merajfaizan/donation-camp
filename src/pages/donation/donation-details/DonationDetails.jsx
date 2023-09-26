@@ -3,18 +3,30 @@ import { Link, useParams } from "react-router-dom";
 import swal from "sweetalert";
 
 const DonationDetails = () => {
-  const [cardData, setCardData] = useState([]);
   const params = useParams();
+  const [cardData, setCardData] = useState([]);
+  const [allDoantions, setAllDonations] = useState([]);
 
+  // data fetching and finding single data
   useEffect(() => {
     fetch("/donation.json")
       .then((res) => res.json())
       .then((data) => setCardData(data));
   }, []);
-
   const card = cardData.find((item) => item._id === params.id) || {};
 
+  // to get local storage data
+  useEffect(() => {
+    const allDoantions = JSON.parse(localStorage.getItem("all-donations"));
+    setAllDonations(allDoantions);
+  }, []);
+
+  // onclick donate donation will set to local storage with prev data and show alert function
   const handleDonate = () => {
+    localStorage.setItem(
+      "all-donations",
+      JSON.stringify([...allDoantions, card])
+    );
     swal(
       "Thank you for your donation.💖",
       "Your contribution is greatly appreciated",
