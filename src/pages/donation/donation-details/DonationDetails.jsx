@@ -17,16 +17,16 @@ const DonationDetails = () => {
 
   // to get local storage data
   useEffect(() => {
-    const allDoantions = JSON.parse(localStorage.getItem("all-donations"));
-    setAllDonations(allDoantions);
+    const storedDonations = JSON.parse(localStorage.getItem("all-donations"));
+    if (storedDonations?.length) {
+      setAllDonations(storedDonations);
+    }
   }, []);
 
   // onclick donate donation will set to local storage with prev data and show alert function
   const handleDonate = () => {
-    localStorage.setItem(
-      "all-donations",
-      JSON.stringify([...allDoantions, card])
-    );
+    const storedDonations = [...allDoantions, card];
+    localStorage.setItem("all-donations", JSON.stringify(storedDonations));
     swal(
       "Thank you for your donation.💖",
       "Your contribution is greatly appreciated",
