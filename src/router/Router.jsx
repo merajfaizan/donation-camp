@@ -4,7 +4,7 @@ import Home from "../pages/home/Home";
 import Donation from "../pages/donation/donation";
 import Statistics from "../pages/statistics/Statistics";
 import DonationDetails from "../pages/donation/donation-details/DonationDetails";
-import NotFound from "../pages/not-found/NotFound";
+import PageNotFound from "../pages/not-found/PageNotFound";
 
 const router = createBrowserRouter([
   {
@@ -35,7 +35,7 @@ const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <NotFound />,
+    element: <PageNotFound />,
   },
 ]);
 
