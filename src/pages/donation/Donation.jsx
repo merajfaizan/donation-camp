@@ -17,12 +17,14 @@ const Donation = () => {
   };
 
   return (
-    <div className="grid grid-cols-2 gap-6 mt-16">
-      {allDoantions?.length &&
-        allDoantions?.slice(0, showAll ? undefined : 4).map((item) => {
-          return <WideCard key={item?._id} cardDetails={item} />;
-        })}
-      <div className="col-span-2 flex justify-center items-center">
+    <div >
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
+        {allDoantions?.length &&
+          allDoantions?.slice(0, showAll ? undefined : 4).map((item) => {
+            return <WideCard key={item?._id} cardDetails={item} />;
+          })}
+      </div>
+      <div className="flex justify-center items-center mt-5">
         {allDoantions?.length > 4 && !showAll && (
           <button
             className="text-white font-semibold px-5 py-2 mb-10 rounded-lg text-center bg-[#009444]"

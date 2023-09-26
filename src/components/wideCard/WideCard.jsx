@@ -17,14 +17,14 @@ const WideCard = ({ cardDetails }) => {
       style={{ backgroundColor: bg_color, color: text_color }}
       className="flex rounded-lg"
     >
-      <div className="w-52">
+      <div className="w-[250px]">
         <img
           className="w-full h-full object-cover rounded-lg"
           src={picture}
           alt=""
         />
       </div>
-      <div className="p-6">
+      <div className="p-6 w-full">
         <p
           style={{ backgroundColor: category_bg_color }}
           className="w-max px-2 rounded-[4px] text-sm "

@@ -11,8 +11,8 @@ const SquareCard = ({ item }) => {
     category_bg_color,
   } = item;
   return (
-    <Link to={`/donation/${_id}`} className="rounded-lg">
-      <img src={picture} alt="card-picture" />
+    <Link to={`/donation/${_id}`} className="rounded-lg block h-[300px]">
+      <img className="rounded-t-lg w-full h-[200px] object-cover object-top" src={picture} alt="card-picture" />
       <div
         style={{
           backgroundColor: bg_color,
