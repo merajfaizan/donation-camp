@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 
 const Home = () => {
   const [cardData, setCardData] = useState([]);
+  const [cards, setCards] = useState([]);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     fetch("/donation.json")
@@ -10,16 +12,16 @@ const Home = () => {
       .then((data) => setCardData(data));
   }, []);
 
-  const [search, setSearch] = useState("");
-
   const handleSubmit = () => {
     event.preventDefault();
 
-    const data = cardData.filter((item) => {
+    const cards = [...cardData];
+
+    const data = cards.filter((item) => {
       const category = item.category;
       return category.toLowerCase() == search.toLowerCase();
     });
-    setCardData(data);
+    setCards(data);
   };
 
   return (
@@ -47,9 +49,13 @@ const Home = () => {
         </form>
       </section>
       <section className="py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {cardData.map((item) => {
-          return <SquareCard key={item._id} item={item} />;
-        })}
+        {!cards.length
+          ? cardData.map((item) => {
+              return <SquareCard key={item._id} item={item} />;
+            })
+          : cards.map((item) => {
+              return <SquareCard key={item._id} item={item} />;
+            })}
       </section>
     </main>
   );
