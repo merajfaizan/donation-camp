@@ -13,23 +13,22 @@ const Donation = () => {
 
   // toggle the showAll function
   const toggleShowAll = () => {
-    setShowAll((prevShowAll) => !prevShowAll);
+    setShowAll(true);
   };
 
   return (
     <div className="grid grid-cols-2 gap-6 mt-16">
       {allDoantions?.length &&
         allDoantions?.slice(0, showAll ? undefined : 4).map((item) => {
-          console.log(item?._id);
           return <WideCard key={item?._id} cardDetails={item} />;
         })}
       <div className="col-span-2 flex justify-center items-center">
-        {allDoantions?.length > 4 && (
+        {allDoantions?.length > 4 && !showAll && (
           <button
             className="text-white font-semibold px-5 py-2 mb-10 rounded-lg text-center bg-[#009444]"
             onClick={toggleShowAll}
           >
-            {showAll ? "Show Less" : "Show All"}
+            Show All
           </button>
         )}
       </div>
